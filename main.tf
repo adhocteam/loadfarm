@@ -88,9 +88,18 @@ resource "aws_autoscaling_group" "asg" {
   }
 }
 
+resource "tls_private_key" "private_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+
+  provisioner "local-exec" {
+    command = "echo \"${tls_private_key.private_key.private_key_pem}\" > files/default.pem; chmod 400 files/default.pem"
+  }
+}
+
 resource "aws_key_pair" "kp" {
   key_name   = "default"
-  public_key = "${file("files/default.pem.pub")}"
+  public_key = "${tls_private_key.private_key.public_key_openssh}"
 }
 
 resource "aws_security_group" "ssh" {

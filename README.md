@@ -8,13 +8,7 @@ This was borne out of a need to run multi-region load testing scripts, but could
 
 This requires Terraform, an AWS account, and a working local AWS command line environment.
 
-First, generate a SSH keypair to use to connect to instances.
-
-```bash
-ssh-keygen -t rsa -b 2048 -f files/default.pem
-```
-
-Next, create a workspace:
+First, create a workspace:
 
 ```bash
 terraform init
@@ -66,4 +60,3 @@ MIT
 First implementation by Chris Gansen (chris@adhoc.team).
 
 Your name could be here! Open a PR!
-
