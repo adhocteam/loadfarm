@@ -93,7 +93,7 @@ resource "tls_private_key" "private_key" {
   rsa_bits  = 4096
 
   provisioner "local-exec" {
-    command = "echo \"${tls_private_key.private_key.private_key_pem}\" > files/identity.pem; chmod 400 files/identity.pem"
+    command = "echo \"${tls_private_key.private_key.private_key_pem}\" > files/default.pem; chmod 400 files/default.pem"
   }
 }
 
